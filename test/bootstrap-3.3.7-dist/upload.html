@@ -28,63 +28,91 @@
 
 <body>
 
-    <div class="container">
-     <nav class="navbar navbar-inverse navbar-static-top">
+  <div class="container">
+    <nav class="navbar navbar-inverse navbar-static-top">
       <div class="container-fluid">
         <div class="navbar-header">
           <a class="navbar-brand" href="#">CloudComputing</a>
-      </div>
-      <ul class="nav navbar-nav navbar-right"> 
+        </div>
+          <ul class="nav navbar-nav navbar-right"> 
             <li><a href="#"><span class="glyphicon glyphicon-user"></span> Login</a></li> 
             <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Logoff</a></li> 
-      </ul> 
+          </ul> 
+    </nav>
 
-     </nav>
-    <div class="table table-striped" class="files" id="previews">
+    <div class="raw">
+      <div class="siderbar col-md-3">
+                <ul class="nav">
+                <li class="active">
+                    <a href="index.html">
+                        <i class="glyphicon glyphicon-th"> Dashboard</i>                   
+                    </a>
+                </li>
+                <li>
+                    <a href="profile.html">
+                        <i class="glyphicon glyphicon-user"> Profile</i>
+                    </a>
+                </li>
+                <li>
+                    <a href="upload.html">
+                        <i class="glyphicon glyphicon-upload"> Upload</i>
+                    </a>
+                </li>
+                
+                </li>
+                <li>
+                    <a href="about.html">
+                        <i class="glyphicon glyphicon-flag"> About</i>
+                    </a>
+                </li>
+                <li>
+                    <a href="Analysis.html">
+                        <i class="glyphicon glyphicon-align-left"> Analysis</i>
+                    </a>
+                </li>
+               
+                </ul>
+      </div>
 
-  <div id="template" class="file-row">
-    <div class="page-header">
-        <h1>Upload your java File            
-        </h1>
-        <p>This example includes a very simple HTML form with two fields, File and Destination. The input type, file, enables a user to browse the local file system to select the file. When the file is selected, it is sent to the server as a part of a POST request. During this process two mandatory restrictions are applied to the form with input type file, t is sent to the server as a part of a POST request. During this process two mandatory restrictions are applied to the form with input type file
-        </p>
-    </div>
-    <!-- This is used as the file preview template -->
-    <div>
+      <div class="filepanel col-md-9">
+      <div class="table table-striped " class="files" id="previews">
+      <div id="template" class="file-row">
+        <div class="page-header">
+            <h1>Upload your java File </h1>
+            <p>This example includes a very simple HTML form with two fields, File and Destination. The input type, file, enables a user to browse the local file system to select the file. When the file is selected, it is sent to the server as a part of a POST request. During this process two mandatory restrictions are applied to the form with input type file, t is sent to the server as a part of a POST request. During this process two mandatory restrictions are applied to the form with input type file</p>
+        </div>
+      <div>
         <span class="preview"><img data-dz-thumbnail /></span>
-    </div>
-    <div>
+      </div>
+      <div>
         <p class="name" data-dz-name></p>
         <strong class="error text-danger" data-dz-errormessage></strong>
-    </div>
-    <div>
+      </div>
+      <div>
         <p class="size" data-dz-size></p>
         <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
           <div class="progress-bar progress-bar-success" style="width:0%;" data-dz-uploadprogress></div>
         </div>
-    </div>
-    <div>
-      <button class="btn btn-primary start">
+      </div>
+      <div>
+        <button class="btn btn-primary start">
           <i class="glyphicon glyphicon-upload"></i>
           <span>Start</span>
-      </button>
-      <button data-dz-remove class="btn btn-warning cancel">
+        </button>
+        <button data-dz-remove class="btn btn-warning cancel">
           <i class="glyphicon glyphicon-ban-circle"></i>
           <span>Cancel</span>
-      </button>
-      <button data-dz-remove class="btn btn-danger delete">
-        <i class="glyphicon glyphicon-trash"></i>
-        <span>Delete</span>
-      </button>
-    </div>
-  </div>
-</div>
-</div>      
-      
-
-
-
+        </button>
+        <button data-dz-remove class="btn btn-danger delete">
+          <i class="glyphicon glyphicon-trash"></i>
+          <span>Delete</span>
+        </button>
       </div>
+      </div>  
+      </div> 
+      </div> 
+      </div>  
+  </div>
 
 
 
