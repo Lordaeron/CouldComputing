@@ -38,6 +38,7 @@ public class LoginServlet extends HttpServlet {
 		System.out.println(email+password);
 		Database db = new Database();
 		boolean flag;
+		flag = false;
 		flag = db.checkPassword(email, password);
 		System.out.println(flag);
 		//flag = true;
