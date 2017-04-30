@@ -215,7 +215,7 @@ public int getCurrent(String email){
 
 //改变账户余额，change为正表示增加
 public boolean setCurrent(String email,int change){
-	int current;
+	int current = -1;
 	try {
 		Class.forName("com.mysql.jdbc.Driver");
 		System.out.println("succes loading driver");
@@ -228,18 +228,19 @@ public boolean setCurrent(String email,int change){
 	try {
 		Connection connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/cloudcomputing","root","Lordaeron");
 		System.out.println("success connect");
-		Statement stmt = connect.createStatement();
-		String sql = "select current from bank where email="+email;
-		ResultSet rs = stmt.executeQuery(sql);
-		
-		//取出CURRENT并返回
-		current = rs.getInt(1);
-		
+		PreparedStatement pstmt;
+		String sql = "select * from bank where email="+"'"+email+"'";
+		pstmt = (PreparedStatement)connect.prepareStatement(sql);
+		ResultSet rs = pstmt.executeQuery();
+		int col = rs.getMetaData().getColumnCount();
+		 while (rs.next()) {
+	         current = rs.getInt(2);
+	     }
 		//改变当前值
 		current = current + change;
 		if(current>=0){
 			String sql2 = "update bank set current="+current+"+ where email="+email;
-			ResultSet rs2 = stmt.executeQuery(sql2);
+			int rs2 = pstmt.executeUpdate(sql2);
 		}
 		else{
 			return false;
