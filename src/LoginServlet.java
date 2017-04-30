@@ -41,7 +41,7 @@ public class LoginServlet extends HttpServlet {
 		flag = false;
 		flag = db.checkPassword(email, password);
 		System.out.println(flag);
-		flag = true;
+		//flag = true;
 		if(flag){
 			HttpSession session = request.getSession(true);
 			session.setAttribute("email", email);

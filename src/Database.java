@@ -17,16 +17,28 @@ public boolean checkPassword(String email,String password){
 	try {
 		Connection connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/cloudcomputing","root","Lordaeron");
 		System.out.println("success connect");
-		Statement stmt = connect.createStatement();
-		String sql = "select password from users where email="+"'"+email+"'";
-		ResultSet rs = stmt.executeQuery(sql);
-		String password1 = rs.getString(1);
-		System.out.println(password1);
-		if(password1.equals(password))
-			flag = true;
-		else 
-			flag = false;
-		connect.close();
+		PreparedStatement pstmt;
+		String sql = "select * from users where email="+"'"+email+"'";
+		pstmt = (PreparedStatement)connect.prepareStatement(sql);
+		ResultSet rs = pstmt.executeQuery();
+		int col = rs.getMetaData().getColumnCount();
+		 while (rs.next()) {
+	            	String password1 = rs.getString(2);
+	            	if(password1.equals(password)){
+	            		flag = true;
+	            	}
+	            	else{
+	            		flag = false;
+	            	}
+	     }
+		 connect.close();
+//		String password1 = rs.getString(1);
+//		System.out.println(password1);
+//		if(password1.equals(password))
+//			flag = true;
+//		else 
+//			flag = false;
+//		connect.close();
 	} catch (SQLException e) {
 		// TODO Auto-generated catch block
 		System.out.println("fail connect");
