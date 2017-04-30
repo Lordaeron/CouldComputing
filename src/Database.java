@@ -32,13 +32,7 @@ public boolean checkPassword(String email,String password){
 	            	}
 	     }
 		 connect.close();
-//		String password1 = rs.getString(1);
-//		System.out.println(password1);
-//		if(password1.equals(password))
-//			flag = true;
-//		else 
-//			flag = false;
-//		connect.close();
+
 	} catch (SQLException e) {
 		// TODO Auto-generated catch block
 		System.out.println("fail connect");
@@ -100,14 +94,16 @@ public String getFirstName(String email){
 	try {
 		Connection connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/cloudcomputing","root","Lordaeron");
 		System.out.println("success connect");
-		Statement stmt = connect.createStatement();
-		String sql = "select first_name from users where email="+email;
-		ResultSet rs = stmt.executeQuery(sql);
-		
-		//取出first_name并返回
-		first_name = rs.toString();
+		PreparedStatement pstmt;
+		String sql = "select * from users where email="+"'"+email+"'";
+		pstmt = (PreparedStatement)connect.prepareStatement(sql);
+		ResultSet rs = pstmt.executeQuery();
+		int col = rs.getMetaData().getColumnCount();
+		 while (rs.next()) {
+	         first_name = rs.getString(3);
+	         return first_name;
+	     }
 		connect.close();
-		return first_name;
 	} catch (SQLException e) {
 		// TODO Auto-generated catch block
 		System.out.println("fail connect");
@@ -131,14 +127,16 @@ public String getLastName(String email){
 	try {
 		Connection connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/cloudcomputing","root","Lordaeron");
 		System.out.println("success connect");
-		Statement stmt = connect.createStatement();
-		String sql = "select last_name from users where email="+email;
-		ResultSet rs = stmt.executeQuery(sql);
-		
-		//取出first_name并返回
-		last_name = rs.toString();
+		PreparedStatement pstmt;
+		String sql = "select * from users where email="+"'"+email+"'";
+		pstmt = (PreparedStatement)connect.prepareStatement(sql);
+		ResultSet rs = pstmt.executeQuery();
+		int col = rs.getMetaData().getColumnCount();
+		 while (rs.next()) {
+	         last_name = rs.getString(4);
+	         return last_name;
+	     }
 		connect.close();
-		return last_name;
 	} catch (SQLException e) {
 		// TODO Auto-generated catch block
 		System.out.println("fail connect");
@@ -162,14 +160,16 @@ public String getDisplayName(String email){
 	try {
 		Connection connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/cloudcomputing","root","Lordaeron");
 		System.out.println("success connect");
-		Statement stmt = connect.createStatement();
-		String sql = "select displayname from users where email="+email;
-		ResultSet rs = stmt.executeQuery(sql);
-		
-		//取出first_name并返回
-		displayname = rs.toString();
+		PreparedStatement pstmt;
+		String sql = "select * from users where email="+"'"+email+"'";
+		pstmt = (PreparedStatement)connect.prepareStatement(sql);
+		ResultSet rs = pstmt.executeQuery();
+		int col = rs.getMetaData().getColumnCount();
+		 while (rs.next()) {
+	         displayname = rs.getString(5);
+	         return displayname;
+	     }
 		connect.close();
-		return displayname;
 	} catch (SQLException e) {
 		// TODO Auto-generated catch block
 		System.out.println("fail connect");
@@ -194,14 +194,16 @@ public int getCurrent(String email){
 	try {
 		Connection connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/cloudcomputing","root","Lordaeron");
 		System.out.println("success connect");
-		Statement stmt = connect.createStatement();
-		String sql = "select current from bank where email="+email;
-		ResultSet rs = stmt.executeQuery(sql);
-		
-		//取出first_name并返回
-		current = rs.getInt(1);
+		PreparedStatement pstmt;
+		String sql = "select * from bank where email="+"'"+email+"'";
+		pstmt = (PreparedStatement)connect.prepareStatement(sql);
+		ResultSet rs = pstmt.executeQuery();
+		int col = rs.getMetaData().getColumnCount();
+		 while (rs.next()) {
+	         current = rs.getInt(2);
+	         return current;
+	     }
 		connect.close();
-		return current;
 	} catch (SQLException e) {
 		// TODO Auto-generated catch block
 		System.out.println("fail connect");
