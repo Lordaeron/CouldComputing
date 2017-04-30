@@ -55,12 +55,12 @@ public boolean signup(String email,String password, String firstname, String las
 		String sql = "insert into users "
 					+ "(email,password,firstname,lastname,displayname) "
 					+ "values("
-					+"'"+email+"','"+password+"','"+firstname+"','"+lastname+"','"+displayname+"');";
+					+"'"+email+"','"+password+"','"+firstname+"','"+lastname+"','"+displayname+"')";
 		System.out.println(sql);
-		ResultSet rs = stmt.executeQuery(sql);
+		int rs = stmt.executeUpdate(sql);
 		System.out.println("flag");
 		String sql2 = "insert into bank (email,current) values('"+email+"',"+"0"+")";
-		ResultSet rs2 = stmt.executeQuery(sql2);
+		int rs2 = stmt.executeUpdate(sql2);
 //		String sql = "select * from users";
 //		ResultSet rs = stmt.executeQuery(sql);
 //		System.out.println("flag");
