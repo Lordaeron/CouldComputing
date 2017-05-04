@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.Enumeration;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
@@ -29,6 +30,7 @@ public class Extractor {
 				
 				if(!entry.isDirectory()){
 					InputStream instream = jarfile.getInputStream(entry);
+					System.out.println(outfile.getName()+outfile.getAbsoluteFile());
 					FileOutputStream outstream = new FileOutputStream(outfile);
 					while(instream.available()>0){
 						outstream.write(instream.read());
@@ -70,4 +72,63 @@ public class Extractor {
              isSuccessful = false;
         }
 	}
-}
+	public static synchronized void decompress(String projectName,String fileName,String outputPath){  
+        
+        if (!outputPath.endsWith(File.separator)) {  
+            outputPath =outputPath+ File.separator+projectName+File.separator;  
+        }  
+        else{
+        	outputPath = outputPath+projectName+File.separator;
+        }
+        File dir = new File(outputPath);  
+        if (!dir.exists()) {  
+            dir.mkdirs();  
+        }  
+        JarFile jf = null;  
+    try{  
+        jf =  new JarFile(fileName);  
+        for (Enumeration<JarEntry> e = jf.entries(); e.hasMoreElements();) {  
+            JarEntry je = (JarEntry) e.nextElement();  
+            String outFileName = outputPath + je.getName();  
+            File f = new File(outFileName);  
+            if(je.isDirectory()){  
+                if(!f.exists()){  
+                    f.mkdirs();  
+                }  
+            }else{  
+                File pf = f.getParentFile();  
+                if(!pf.exists()){  
+                    pf.mkdirs();  
+                }  
+                InputStream in = jf.getInputStream(je);  
+                OutputStream out = new BufferedOutputStream(  
+                        new FileOutputStream(f));  
+                byte[] buffer = new byte[2048];  
+                int nBytes = 0;  
+                while ((nBytes = in.read(buffer)) > 0) {  
+                    out.write(buffer, 0, nBytes);  
+                }  
+                out.flush();  
+                out.close();  
+                in.close();  
+            }  
+        }  
+    }catch(Exception e){  
+        System.out.println("解压"+fileName+"出错---"+e.getMessage());  
+    }finally{  
+        if(jf!=null){  
+            try {  
+                jf.close();  
+                File jar = new File(jf.getName());  
+                if(jar.exists()){  
+                    jar.delete();  
+                    System.out.print("delete");
+                }  
+            } catch (IOException e) {  
+                e.printStackTrace();  
+            }  
+        }  
+    }  
+}  
+}  
+

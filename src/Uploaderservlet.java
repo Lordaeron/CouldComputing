@@ -76,6 +76,8 @@ public class Uploaderservlet extends HttpServlet {
 		Database db = new Database();
 		db.uploadApp(fileName, email, path);
 		response.getWriter().append("upload sucess").append(savePath);
+		Extractor ex = new Extractor();
+		ex.decompress("hah",path, "/Users/yinglunshi/desktop");
 	}
 
 }
