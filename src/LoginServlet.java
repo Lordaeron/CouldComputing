@@ -45,6 +45,9 @@ public class LoginServlet extends HttpServlet {
 		if(flag){
 			HttpSession session = request.getSession(true);
 			session.setAttribute("email", email);
+			String displayname;
+			displayname = db.getDisplayName(email);
+			session.setAttribute("displayname", displayname);
 			System.out.println(session);
 			rd = request.getRequestDispatcher("/index.html");
 			rd.forward(request, response);

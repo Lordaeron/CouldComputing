@@ -1,6 +1,9 @@
 
 
 import java.io.IOException;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -45,7 +48,18 @@ public class SignupServlet extends HttpServlet {
    		boolean isMatch = matcher.matches();
    		return isMatch;
    }
- 
+   private String getMD5(String password){
+	   MessageDigest md;
+	try {
+		md = MessageDigest.getInstance("MD5");
+		md.update(password.getBytes());
+		return new BigInteger(1, md.digest()).toString(16);
+	} catch (NoSuchAlgorithmException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	return password;
+   }
     
     
 	/**
@@ -64,7 +78,7 @@ public class SignupServlet extends HttpServlet {
     	String password = request.getParameter("password");
     	System.out.println(first_name);
     	boolean check = checkEmail(email);
-    	
+    	String md5 = getMD5(password);
     	// 判断邮箱格式是否合法
     	if(!check){
     		System.out.println("email pattern illegal");
@@ -81,7 +95,9 @@ public class SignupServlet extends HttpServlet {
     		//将email作为主键存入session
     		HttpSession session = request.getSession(true);
     		session.setAttribute("email", email);
-    		
+    		session.setAttribute("displayname", displayname);
+    		System.out.println(session.getAttribute("email"));
+    		System.out.println(session.getAttribute("displayname"));
     		rd = request.getRequestDispatcher("index.html");
         	rd.forward(request, response);
     	}

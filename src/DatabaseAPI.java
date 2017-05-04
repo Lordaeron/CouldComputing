@@ -38,23 +38,28 @@ public class DatabaseAPI extends HttpServlet {
 		doGet(request, response);
 		Database db = new Database();
 		String getUsername;
-		String result;
 		
 		getUsername = request.getParameter("getUsername");
 		if(getUsername.length() !=0){
-			result = db.getDisplayName(getUsername);
+			String username;
+			username = db.getDisplayName(getUsername);
+			response.getWriter().write(username);
 		}
 		
 		String getFirstname;
 		getFirstname = request.getParameter("getFirstname");
 		if(getFirstname.length() !=0){
-			result = db.getFirstName(getFirstname);
+			String firstname;
+			firstname = db.getFirstName(getFirstname);
+			response.getWriter().write(firstname);
 		}
 		
 		String getLastname;
 		getLastname = request.getParameter("getLastname");
 		if(getLastname.length() !=0){
-			result = db.getLastName(getLastname);
+			String lastname;
+			lastname = db.getLastName(getLastname);
+			response.getWriter().write(lastname);
 		}
 		
 		String getCurrent;
@@ -62,6 +67,7 @@ public class DatabaseAPI extends HttpServlet {
 		int resCurrent;
 		if(getCurrent.length() !=0){
 			resCurrent = db.getCurrent(getCurrent);
+			response.getWriter().write(resCurrent);
 		}
 		
 		String changeCurrent;
@@ -72,9 +78,8 @@ public class DatabaseAPI extends HttpServlet {
 			db.setCurrent(changeCurrent, change);
 			int current;
 			current = db.getCurrent(changeCurrent);
-		}
-		
-		request.setAttribute("key", "value");  
+			response.getWriter().write(current);
+		} 
 		
 	}
 

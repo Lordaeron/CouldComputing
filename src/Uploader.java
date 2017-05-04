@@ -2,6 +2,8 @@
 
 import java.io.IOException;
 import java.io.File;
+
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -55,14 +57,16 @@ public class Uploader extends HttpServlet {
 		// TODO Auto-generated method stub
 		
 		//获取当前app的绝对路径
-		String appPath = request.getServletContext().getRealPath("");
+		String appPath = request.getServletContext().getRealPath("/");
 		
+		//String appPath = "Users/yinglunshi/desktop/";
+		System.out.println(appPath);
 		//创建上传app的存储路径
 		String savePath = appPath+File.separator+SAVE_DIR;
-		
+		System.out.println(savePath);
 		//创建存储目录
 		File fileSaveDir = new File(savePath);
-		
+		System.out.println(fileSaveDir.getAbsolutePath());
 		if(!fileSaveDir.exists())
 			fileSaveDir.mkdir();
 		
@@ -75,9 +79,9 @@ public class Uploader extends HttpServlet {
 		System.out.println("upload ok");
 		
 		//解压
-		Extractor ex = new Extractor();
+		//Extractor ex = new Extractor();
 		//需要当前jar路径和解压路径
-		ex.unpackJar(savePath, savePath);
+		//ex.unpackJar(savePath, savePath);
 		doGet(request, response);
 	}
 

@@ -1,0 +1,6 @@
+127.0.0.1 - - [04/May/2017:17:28:22 +0100] "GET / HTTP/1.1" 404 994
+0:0:0:0:0:0:0:1 - - [04/May/2017:17:28:23 +0100] "GET /CloudComputing/js/jquery.js HTTP/1.1" 404 1048
+127.0.0.1 - - [04/May/2017:17:30:23 +0100] "GET / HTTP/1.1" 404 994
+0:0:0:0:0:0:0:1 - - [04/May/2017:17:30:24 +0100] "GET /CloudComputing/js/jquery.js HTTP/1.1" 404 1048
+0:0:0:0:0:0:0:1 - - [04/May/2017:17:30:35 +0100] "GET /CloudComputing/js/jquery.js HTTP/1.1" 404 1048
+0:0:0:0:0:0:0:1 - - [04/May/2017:17:30:40 +0100] "POST /CloudComputing/Uploader HTTP/1.1" 200 26
