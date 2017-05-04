@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    <%@page import="javax.servlet.http.HttpSession"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,6 +16,8 @@
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <%HttpSession ses = request.getSession(true);
+	String name = ses.getAttribute("displayname").toString();%>
 </head>
 
 <body>
@@ -24,7 +29,7 @@
           <a class="navbar-brand" href="start.html">CloudComputing</a>
         </div>
           <ul class="nav navbar-nav navbar-right"> 
-            <li><a href="#"><span class="glyphicon glyphicon-user"></span><%session.getAttribute("email")%></a></li> 
+            <li><a href="#"><span class="glyphicon glyphicon-user"></span><%= name%></a></li> 
             <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Logoff</a></li> 
           </ul> 
     </nav>

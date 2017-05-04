@@ -286,7 +286,7 @@ public boolean setCurrent(String email,int change){
 	return false;
 }
 
-public void uploadApp(String app_name,String owner_email, String about){
+public void uploadApp(String app_name,String owner_email, String url,String about){
 	try {
 		Class.forName("com.mysql.jdbc.Driver");
 		System.out.println("succes loading driver");
@@ -300,7 +300,7 @@ public void uploadApp(String app_name,String owner_email, String about){
 		Connection connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/cloudcomputing","root","Lordaeron");
 		System.out.println("success connect");
 		Statement stmt = connect.createStatement();
-		String sql = "insert into uploadedapp "
+		String sql = "insert into uploadedapps "
 					+ "(name,owner_email,about) "
 					+ "values("
 					+"'"+app_name+"','"+owner_email+"','"+about+"')";

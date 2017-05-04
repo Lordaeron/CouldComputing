@@ -64,20 +64,28 @@ public class Uploaderservlet extends HttpServlet {
 		HttpSession session = request.getSession(true);
 		String email = session.getAttribute("email").toString();
 		
+		String appName = request.getParameter("appname");
+		String about = request.getParameter("aboutapp");
+		//String appName = "123";
+		//String about = "456";
+		System.out.println(appName+about);
+		
 		if (!fileSaveDir.exists()) fileSaveDir.mkdir(); 
 		String fileName = null;
-		for (Part part : request.getParts()) {
+		
+			Part part  = request.getPart("file");
 			fileName = extractFileName(part);
-			part.write(savePath + File.separator + fileName); }
+			part.write(savePath + File.separator + fileName); 
 		// Add more code here to generate HTML response 
 		// to say that upload was completed successfully
 		//doGet(request, response);
 		String path = savePath+File.separator +fileName;
 		Database db = new Database();
-		db.uploadApp(fileName, email, path);
+		db.uploadApp(appName, email, path,about);
 		response.getWriter().append("upload sucess").append(savePath);
+		
 		Extractor ex = new Extractor();
-		ex.decompress("hah",path, "/Users/yinglunshi/desktop");
+		ex.decompress(appName,path, "/Users/yinglunshi/desktop");
 	}
 
 }

@@ -48,8 +48,9 @@ public class LoginServlet extends HttpServlet {
 			String displayname;
 			displayname = db.getDisplayName(email);
 			session.setAttribute("displayname", displayname);
+			
 			System.out.println(session);
-			rd = request.getRequestDispatcher("/index.html");
+			rd = request.getRequestDispatcher("/index.jsp");
 			rd.forward(request, response);
 		}
 		else{
