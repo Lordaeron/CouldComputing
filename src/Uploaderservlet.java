@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.servlet.annotation.MultipartConfig; 
 import javax.servlet.http.Part;
 /**
@@ -59,13 +60,21 @@ public class Uploaderservlet extends HttpServlet {
 		// Create the save directory if it does not exist
 		File fileSaveDir = new File(savePath); 
 		
+		//从当前session 中获取用户主键值
+		HttpSession session = request.getSession(true);
+		String email = session.getAttribute("email").toString();
+		
 		if (!fileSaveDir.exists()) fileSaveDir.mkdir(); 
+		String fileName = null;
 		for (Part part : request.getParts()) {
-			String fileName = extractFileName(part);
+			fileName = extractFileName(part);
 			part.write(savePath + File.separator + fileName); }
 		// Add more code here to generate HTML response 
 		// to say that upload was completed successfully
 		//doGet(request, response);
+		String path = savePath+File.separator +fileName;
+		Database db = new Database();
+		db.uploadApp(fileName, email, path);
 		response.getWriter().append("upload sucess").append(savePath);
 	}
 

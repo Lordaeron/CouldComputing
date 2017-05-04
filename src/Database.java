@@ -285,5 +285,33 @@ public boolean setCurrent(String email,int change){
 	}
 	return false;
 }
+
+public void uploadApp(String app_name,String owner_email, String about){
+	try {
+		Class.forName("com.mysql.jdbc.Driver");
+		System.out.println("succes loading driver");
+	} catch (ClassNotFoundException e) {
+		// TODO Auto-generated catch block
+		System.out.println("fail loading driver");
+		e.printStackTrace();
+	}
+	
+	try {
+		Connection connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/cloudcomputing","root","Lordaeron");
+		System.out.println("success connect");
+		Statement stmt = connect.createStatement();
+		String sql = "insert into uploadedapp "
+					+ "(name,owner_email,about) "
+					+ "values("
+					+"'"+app_name+"','"+owner_email+"','"+about+"')";
+		System.out.println(sql);
+		int rs = stmt.executeUpdate(sql);
+		connect.close();
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		System.out.println("fail connect");
+		e.printStackTrace();
+	}
+}
   
 }
