@@ -178,6 +178,37 @@ public String getDisplayName(String email){
 	return "fail";
 }
 
+public boolean changeProfile(String email, String displayname, String first_name, String last_name, String address, String postcode,
+		String about){
+	boolean flag = false;
+	try {
+		Class.forName("com.mysql.jdbc.Driver");
+		System.out.println("succes loading driver");
+	} catch (ClassNotFoundException e) {
+		// TODO Auto-generated catch block
+		System.out.println("fail loading driver");
+		e.printStackTrace();
+	}
+	
+	try {
+		Connection connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/cloudcomputing","root","Lordaeron");
+		System.out.println("success connect");
+		PreparedStatement pstmt;
+		String sql = "update users set firstname="+"'"+first_name+"',"+"last_name="+"'"+last_name+"',"+"displayname="+"'"+displayname+"'"+"where email="+"'"+email+"'";
+		pstmt = (PreparedStatement)connect.prepareStatement(sql);
+		int rs = pstmt.executeUpdate();
+		String sql2 = "update user_profile set address="+"'"+address+"',"+"postcode="+"'"+postcode+"',"+"about="+"'"+about+"'"+"where email="+"'"+email+"'";
+		pstmt = (PreparedStatement)connect.prepareStatement(sql2);
+		int rs2 = pstmt.executeUpdate();
+		connect.close();
+		return true;
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		System.out.println("fail connect");
+		e.printStackTrace();
+	}
+	return flag;
+}
 
 //获取用户当前余额，失败返回－1
 public int getCurrent(String email){

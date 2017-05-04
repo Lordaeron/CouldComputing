@@ -77,7 +77,7 @@ public class Uploader extends HttpServlet {
 		//解压
 		Extractor ex = new Extractor();
 		//需要当前jar路径和解压路径
-		ex.unpack(savePath, savePath);
+		ex.unpackJar(savePath, savePath);
 		doGet(request, response);
 	}
 
