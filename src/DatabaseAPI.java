@@ -35,50 +35,54 @@ public class DatabaseAPI extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		//doGet(request, response);
 		Database db = new Database();
-		String getUsername;
+		String getUsername = "";
 		
 		getUsername = request.getParameter("getUsername");
-		if(getUsername.length() !=0){
+		if(getUsername!=null && getUsername.length()>0){
 			String username;
 			username = db.getDisplayName(getUsername);
 			response.getWriter().write(username);
 		}
 		
-		String getFirstname;
+		String getFirstname = "";
 		getFirstname = request.getParameter("getFirstname");
-		if(getFirstname.length() !=0){
+		if(getFirstname!=null && getFirstname.length()>0){
 			String firstname;
 			firstname = db.getFirstName(getFirstname);
 			response.getWriter().write(firstname);
 		}
 		
-		String getLastname;
+		String getLastname ="";
 		getLastname = request.getParameter("getLastname");
-		if(getLastname.length() !=0){
+		if(getLastname!=null && getLastname.length()>0){
 			String lastname;
 			lastname = db.getLastName(getLastname);
 			response.getWriter().write(lastname);
 		}
 		
-		String getCurrent;
+		String getCurrent ="";
 		getCurrent = request.getParameter("getCurrent");
+		System.out.println(getCurrent);
 		int resCurrent;
-		if(getCurrent.length() !=0){
+		if(getCurrent != null && getCurrent.length()>0){
 			resCurrent = db.getCurrent(getCurrent);
-			response.getWriter().write(resCurrent);
+			System.out.println(resCurrent);
+			response.getWriter().write(String.valueOf(resCurrent));
 		}
 		
-		String changeCurrent;
-		int change;
+		String changeCurrent ="";
+		String tCurrent ="";
+		int change =0;
 		changeCurrent = request.getParameter("changeCurrent");
-		change = Integer.parseInt(request.getParameter("change"));
-		if(changeCurrent.length() * change !=0){
+		tCurrent = request.getParameter("change");
+		if(changeCurrent!=null && changeCurrent.length()>0 && tCurrent !=null && tCurrent.length()>0){
+			change = Integer.parseInt(tCurrent);
 			db.setCurrent(changeCurrent, change);
 			int current;
 			current = db.getCurrent(changeCurrent);
-			response.getWriter().write(current);
+			response.getWriter().write(String.valueOf(current));
 		} 
 		
 	}

@@ -87,7 +87,8 @@ public class Uploaderservlet extends HttpServlet {
 		response.getWriter().append("upload sucess").append(savePath);
 		
 		Extractor ex = new Extractor();
-		ex.decompress(appName,path, "/Library/Tomcat/webapps");
+		String projectName[] = fileName.split("\\.");
+		ex.decompress(projectName[0],path, "/Library/Tomcat/webapps");
 		RequestDispatcher rd;
 		rd = request.getRequestDispatcher("/index.jsp");
 		rd.forward(request, response);

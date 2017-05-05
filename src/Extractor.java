@@ -114,7 +114,7 @@ public class Extractor {
             }  
         }  
     }catch(Exception e){  
-        System.out.println("解压"+fileName+"出错---"+e.getMessage());  
+        System.out.println("error");  
     }finally{  
         if(jf!=null){  
             try {  

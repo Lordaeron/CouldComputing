@@ -268,9 +268,11 @@ public boolean setCurrent(String email,int change){
 	         current = rs.getInt(2);
 	     }
 		//改变当前值
+		System.out.println(current);
 		current = current + change;
+		System.out.println(current);
 		if(current>=0){
-			String sql2 = "update bank set current="+current+"+ where email="+email;
+			String sql2 = "update bank set current="+current+" where email="+"'"+email+"'";
 			int rs2 = pstmt.executeUpdate(sql2);
 		}
 		else{

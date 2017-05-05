@@ -3,6 +3,7 @@
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -49,6 +50,9 @@ public class LoginServlet extends HttpServlet {
 			displayname = db.getDisplayName(email);
 			session.setAttribute("displayname", displayname);
 			
+			ServletContext ContextA =request.getSession().getServletContext(); 
+		    ContextA.setAttribute("displayname", displayname);
+		    
 			System.out.println(session);
 			rd = request.getRequestDispatcher("/index.jsp");
 			rd.forward(request, response);
