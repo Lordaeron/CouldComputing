@@ -11,16 +11,16 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class LoginServlet
+ * Servlet implementation class LogOff
  */
-@WebServlet("/LoginServlet")
-public class LoginServlet extends HttpServlet {
+@WebServlet("/LogOff")
+public class LogOff extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LoginServlet() {
+    public LogOff() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,34 +31,11 @@ public class LoginServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
-		String errMsg = "";
+		HttpSession session1 = request.getSession();
+		session1.invalidate();
 		RequestDispatcher rd;
-		String email = request.getParameter("email");
-		String password = request.getParameter("password");
-		System.out.println(email+password);
-		Database db = new Database();
-		boolean flag;
-		flag = false;
-		flag = db.checkPassword(email, password);
-		System.out.println(flag);
-		//flag = true;
-		if(flag){
-			HttpSession session = request.getSession(true);
-			session.setAttribute("email", email);
-			String displayname;
-			displayname = db.getDisplayName(email);
-			session.setAttribute("displayname", displayname);
-			
-			System.out.println(session);
-			rd = request.getRequestDispatcher("/index.jsp");
-			rd.forward(request, response);
-		}
-		else{
-			System.out.println("fail");
-			rd = request.getRequestDispatcher("/login.jsp");
-			request.setAttribute("err", errMsg);
-			rd.forward(request, response);
-		}
+		rd = request.getRequestDispatcher("/login.jsp");
+		rd.forward(request, response);
 	}
 
 	/**
@@ -66,8 +43,8 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
 		
+		doGet(request, response);
 	}
 
 }

@@ -2,6 +2,8 @@
 
 import java.io.File;
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -85,7 +87,11 @@ public class Uploaderservlet extends HttpServlet {
 		response.getWriter().append("upload sucess").append(savePath);
 		
 		Extractor ex = new Extractor();
-		ex.decompress(appName,path, "/Users/yinglunshi/desktop");
+		ex.decompress(appName,path, "/Library/Tomcat/webapps");
+		RequestDispatcher rd;
+		rd = request.getRequestDispatcher("/index.jsp");
+		rd.forward(request, response);
+		
 	}
 
 }

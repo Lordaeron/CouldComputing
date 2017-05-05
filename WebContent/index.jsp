@@ -26,40 +26,42 @@
     <nav class="navbar navbar-inverse navbar-static-top">
       <div class="container-fluid">
         <div class="navbar-header">
-          <a class="navbar-brand" href="start.html">CloudComputing</a>
+          <a class="navbar-brand" href="start.jsp">CloudComputing</a>
         </div>
           <ul class="nav navbar-nav navbar-right"> 
-            <li><a href="#"><span class="glyphicon glyphicon-user"></span><%= name%></a></li> 
-            <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Logoff</a></li> 
+            <li><a href="#"><span class="glyphicon glyphicon-user"></span><%= name%></a></li>
+            <form action="LogOff" method="POST">
+            <li><a href="login.jsp"><span class="glyphicon glyphicon-log-in"></span> Logoff</a></li>
+            </form>> 
           </ul> 
     </nav>
         <div class="raw">
             <div class="siderbar col-md-3">
                 <ul class="nav">
                 <li class="active">
-                    <a href="index.html">
+                    <a href="index.jsp">
                         <i class="glyphicon glyphicon-th"> Dashboard</i>                   
                     </a>
                 </li>
                 <li>
-                    <a href="profile.html">
+                    <a href="profile.jsp">
                         <i class="glyphicon glyphicon-user"> Profile</i>
                     </a>
                 </li>
                 <li>
-                    <a href="upload.html">
+                    <a href="upload.jsp">
                         <i class="glyphicon glyphicon-upload"> Upload</i>
                     </a>
                 </li>
                 
                 </li>
                 <li>
-                    <a href="about.html">
+                    <a href="about.jsp">
                         <i class="glyphicon glyphicon-flag"> About</i>
                     </a>
                 </li>
                 <li>
-                    <a href="Analysis.html">
+                    <a href="Analysis.jsp">
                         <i class="glyphicon glyphicon-align-left"> Analysis</i>
                     </a>
                 </li>

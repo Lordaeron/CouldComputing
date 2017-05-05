@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    <%@page import="javax.servlet.http.HttpSession"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,7 +11,8 @@
     <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="siliang liu">
-
+	<%HttpSession ses = request.getSession(true);
+	String name = ses.getAttribute("displayname").toString();%>
     <title>Profile</title>
 
     <!-- Bootstrap Core CSS -->
@@ -25,8 +29,10 @@
                 <a class="navbar-brand" href="#">CloudComputing</a>
             </div>
                 <ul class="nav navbar-nav navbar-right"> 
-                <li><a href="#"><span class="glyphicon glyphicon-user"></span> Login</a></li> 
-                <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Logoff</a></li> 
+                <li><a href="#"><span class="glyphicon glyphicon-user"></span><%= name%></a></li> 
+                <form action="LogOff" method="POST">
+                <li><a href="login.jsp"><span class="glyphicon glyphicon-log-in"></span> Logoff</a></li> 
+                </form>
                 </ul> 
         </nav>
 
@@ -35,29 +41,29 @@
            <div class="siderbar col-md-3">
                 <ul class="nav">
                 <li class="active">
-                    <a href="index.html">
+                    <a href="index.jsp">
                         <i class="glyphicon glyphicon-th"> Dashboard</i>                   
                     </a>
                 </li>
                 <li>
-                    <a href="profile.html">
+                    <a href="profile.jsp">
                         <i class="glyphicon glyphicon-user"> Profile</i>
                     </a>
                 </li>
                 <li>
-                    <a href="upload.html">
+                    <a href="upload.jsp">
                         <i class="glyphicon glyphicon-upload"> Upload</i>
                     </a>
                 </li>
                 
                 </li>
                 <li>
-                    <a href="about.html">
+                    <a href="about.jsp">
                         <i class="glyphicon glyphicon-flag"> About</i>
                     </a>
                 </li>
                 <li>
-                    <a href="Analysis.html">
+                    <a href="Analysis.jsp">
                         <i class="glyphicon glyphicon-align-left"> Analysis</i>
                     </a>
                 </li>

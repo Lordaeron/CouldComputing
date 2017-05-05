@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=utf-8"  
+    pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,43 +32,29 @@
 
 </head>
 <body>
-<form action="SignupServlet" method="POST">
+<form action="LoginServlet" method="POST">
 <div class="container">
 
 <div class="row">
     <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
 		<form role="form">
-			<h2>Sheffield Cloud Sign Up</h2>
+			<h2>Sheffield Cloud Login</h2>
             <hr/>
-			<div class="row">
-				<div class="col-xs-6 col-sm-6 col-md-6">
-					<div class="form-group">
-                        <input type="text" name="first_name" id="first_name" class="form-control input-lg" placeholder="First Name" tabindex="1">
-					</div>
-				</div>
-				<div class="col-xs-6 col-sm-6 col-md-6">
-					<div class="form-group">
-						<input type="text" name="last_name" id="last_name" class="form-control input-lg" placeholder="Last Name" tabindex="2">
-					</div>
-				</div>
-			</div>
-			<div class="form-group">
-				<input type="text" name="displayname" id="displayname" class="form-control input-lg" placeholder="Display name" tabindex="3">
-			</div>
+		
 			<div class="form-group">
 				<input type="email" name="email" id="email" class="form-control input-lg" placeholder="Email Address" tabindex="4">
 			</div>
-				<div class="form-group">
+			<div class="form-group">
 				<input type="password" name="password" id="email" class="form-control input-lg" placeholder="Password" tabindex="4">
 			</div>
             <hr/>
 			<div class="row">
-				<div class="col-xs-6 col-md-6"><input type="submit" value="Register" class="btn btn-primary btn-block btn-lg" tabindex="7"></div>
-				<div class="col-xs-6 col-md-6"><input type="submit" value="Back" class="btn btn-warning btn-block btn-lg" tabindex="7"></div>
+				<div class="col-xs-6 col-md-6"><input href="start.jsp" value="back" class="btn btn-primary btn-block btn-lg" tabindex="7"></div>
+				<div class="col-xs-6 col-md-6"><input type="submit" value="Login" class="btn btn-warning btn-block btn-lg" tabindex="8"></div>
 			</div>
 		</form>
 	</div>
 </div>
 </div>
-</form>
+</form>>
 </body>

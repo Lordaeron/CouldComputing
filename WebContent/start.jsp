@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=utf-8"  
+    pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,7 +37,7 @@
      <div class="container">
         <h1>Sheffield Cloud</h1>
         <p>Now available: Sheffield Cloud </p>
-        <p><a href="signup.html"class="btn btn-primary btn-lg" role="button">Sign in to console</a>
+        <p><a href="signup.jsp"class="btn btn-primary btn-lg" role="button">Sign in to console</a>
         </p>
     </div>
     </div>
