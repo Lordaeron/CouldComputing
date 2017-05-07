@@ -10,6 +10,7 @@ import java.util.regex.Pattern;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -98,11 +99,19 @@ public class SignupServlet extends HttpServlet {
     		session.setAttribute("displayname", displayname);
     		System.out.println(session.getAttribute("email"));
     		System.out.println(session.getAttribute("displayname"));
-    		rd = request.getRequestDispatcher("index.html");
+    		Cookie cookiee = new Cookie("email",email);
+    		Cookie cookied = new Cookie("displayname",displayname);
+    		cookiee.setMaxAge(60*60*1000);
+    		cookiee.setPath("/");
+    		cookied.setMaxAge(60*60*1000);
+    		cookied.setPath("/");
+    		response.addCookie(cookiee);
+    		response.addCookie(cookied);
+    		rd = request.getRequestDispatcher("index.jsp");
         	rd.forward(request, response);
     	}
     	else{
-    		rd = request.getRequestDispatcher("signup.html");
+    		rd = request.getRequestDispatcher("signup.jsp");
     		rd.forward(request, response);
     	}
 		response.getWriter().append("Served at: ").append(request.getContextPath());

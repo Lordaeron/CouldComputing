@@ -65,7 +65,7 @@ public boolean signup(String email,String password, String firstname, String las
 		System.out.println(sql);
 		int rs = stmt.executeUpdate(sql);
 		System.out.println("flag");
-		String sql2 = "insert into bank (email,current) values('"+email+"',"+"0"+")";
+		String sql2 = "insert into bank (email,current) values('"+email+"',"+"100"+")";
 		int rs2 = stmt.executeUpdate(sql2);
 //		String sql = "select * from users";
 //		ResultSet rs = stmt.executeQuery(sql);
@@ -132,7 +132,7 @@ public String getLastName(String email){
 		pstmt = (PreparedStatement)connect.prepareStatement(sql);
 		ResultSet rs = pstmt.executeQuery();
 		int col = rs.getMetaData().getColumnCount();
-		 while (rs.next()) {
+		while (rs.next()) {
 	         last_name = rs.getString(4);
 	         return last_name;
 	     }
@@ -303,9 +303,9 @@ public void uploadApp(String app_name,String owner_email, String url,String abou
 		System.out.println("success connect");
 		Statement stmt = connect.createStatement();
 		String sql = "insert into uploadedapps "
-					+ "(name,owner_email,about) "
+					+ "(name,owner_email,url,about) "
 					+ "values("
-					+"'"+app_name+"','"+owner_email+"','"+about+"')";
+					+"'"+app_name+"','"+owner_email+"','"+url+"','"+about+"')";
 		System.out.println(sql);
 		int rs = stmt.executeUpdate(sql);
 		connect.close();

@@ -83,13 +83,18 @@ public class Uploaderservlet extends HttpServlet {
 		//doGet(request, response);
 		String path = savePath+File.separator +fileName;
 		Database db = new Database();
-		db.uploadApp(appName, email, path,about);
 		response.getWriter().append("upload sucess").append(savePath);
 		
 		Extractor ex = new Extractor();
 		String projectName[] = fileName.split("\\.");
+		String projectDir = "/Library/Tomcat/webapps";
 		ex.decompress(projectName[0],path, "/Library/Tomcat/webapps");
+		String path2 = projectDir + projectName[0];
+		String name3 = projectName[0];
+		db.uploadApp(appName, email,"/"+projectName[0],about);
 		RequestDispatcher rd;
+		System.out.println(projectName[0]);
+		System.out.println(projectName[1]);
 		rd = request.getRequestDispatcher("/index.jsp");
 		rd.forward(request, response);
 		

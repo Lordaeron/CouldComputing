@@ -6,6 +6,7 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -44,16 +45,27 @@ public class LoginServlet extends HttpServlet {
 		System.out.println(flag);
 		//flag = true;
 		if(flag){
+			
 			HttpSession session = request.getSession(true);
 			session.setAttribute("email", email);
 			String displayname;
 			displayname = db.getDisplayName(email);
 			session.setAttribute("displayname", displayname);
 			
-			ServletContext ContextA =request.getSession().getServletContext(); 
-		    ContextA.setAttribute("displayname", displayname);
+			ServletContext ContextA =session.getServletContext();
+			ContextA.setAttribute("session", session);
 		    
 			System.out.println(session);
+			
+			Cookie cookiee = new Cookie("email",email);
+    		Cookie cookied = new Cookie("displayname",displayname);
+    		cookiee.setMaxAge(60*60*1000);
+    		cookiee.setPath("/");
+    		cookied.setMaxAge(60*60*1000);
+    		cookied.setPath("/");
+    		response.addCookie(cookiee);
+    		response.addCookie(cookied);
+			
 			rd = request.getRequestDispatcher("/index.jsp");
 			rd.forward(request, response);
 		}

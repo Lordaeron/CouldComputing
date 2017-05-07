@@ -76,37 +76,37 @@
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-3">
-                                    <span class="glyphicon glyphicon-user"></span>
+                                    
+                                    <img scr="/Arkanoid/Test.png", alt=" icon ", height="50", width = "50">
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">1</div>
-                                    <div>Test!</div>
+                             
+                                    <div>Arkanoid</div>
                                 </div>
                             </div>
                         </div>
-                        <a href="#">
+                        <a href="/Arkanoid">
                             <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
+                                <span class="pull-left">View Details<</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                 <div class="clearfix"></div>
                             </div>
                         </a>
                     </div>
                 </div>
-             <!--    <div class="col-lg-3 col-md-6">
+                <div class="col-lg-3 col-md-6">
                     <div class="panel panel-success">
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-3">
-                                    <i class="fa fa-tasks fa-5x"></i>
+                                    <img scr="/Roulette/Test.png", alt=" icon ", height="50", width = "50">
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">12</div>
-                                    <div>New Tasks!</div>
+                                    <div>Roulette</div>
                                 </div>
                             </div>
                         </div>
-                        <a href="#">
+                        <a href="/betgame">
                             <div class="panel-footer">
                                 <span class="pull-left">View Details</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -120,15 +120,14 @@
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-3">
-                                    <i class="fa fa-shopping-cart fa-5x"></i>
+                                    <img scr="/FlappyBird/Test.png", alt=" icon ", height="50", width = "50">
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">124</div>
-                                    <div>New Orders!</div>
+                                    <div>Flappy Bird</div>
                                 </div>
                             </div>
                         </div>
-                        <a href="#">
+                        <a href="/FlappyBird">
                             <div class="panel-footer">
                                 <span class="pull-left">View Details</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -142,15 +141,14 @@
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-3">
-                                    <i class="fa fa-support fa-5x"></i>
+                                    <img scr="/BlackJack/Test1.png", alt=" icon ", height="50", width = "50">
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">13</div>
-                                    <div>Support Tickets!</div>
+                                    <div>Black Jack</div>
                                 </div>
                             </div>
                         </div>
-                        <a href="#">
+                        <a href="/blackjack/blackjack.html">
                             <div class="panel-footer">
                                 <span class="pull-left">View Details</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -163,7 +161,7 @@
              </div>
         </div>
     </div>
-  -->
+ 
 
 
     <!-- jQuery -->
