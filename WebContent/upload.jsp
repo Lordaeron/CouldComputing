@@ -75,7 +75,7 @@
       <div id="template" class="file-row">
         <div class="page-header">
             <h1>Upload your java File </h1>
-            <p>Please upload a game application in JAR, ZIP or WAR format. </p>
+            <p>This example includes a very simple HTML form with two fields, File and Destination. The input type, file, enables a user to browse the local file system to select the file. When the file is selected, it is sent to the server as a part of a POST request. During this process two mandatory restrictions are applied to the form with input type file, t is sent to the server as a part of a POST request. During this process two mandatory restrictions are applied to the form with input type file</p>
         </div>
       <div>
         <span class="preview"><img data-dz-thumbnail /></span>
@@ -91,7 +91,18 @@
         </div>
       </div>
       <div>
-
+<!--         <button class="btn btn-primary start" action="Uploader>
+          <i class="glyphicon glyphicon-upload"></i>
+          <span>Start</span>
+        </button>
+        <button data-dz-remove class="btn btn-warning cancel">
+          <i class="glyphicon glyphicon-ban-circle"></i>
+          <span>Cancel</span>
+        </button>
+        <button data-dz-remove class="btn btn-danger delete">
+          <i class="glyphicon glyphicon-trash"></i>
+          <span>Delete</span>
+        </button> -->
         <form action="Uploaderservlet" method="post" enctype="multipart/form-data">
         <input type="text" method="post" name="appname"> </input>
         <input type="text" method="post" name="aboutapp"> </input>

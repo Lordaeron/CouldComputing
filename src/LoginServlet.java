@@ -52,6 +52,9 @@ public class LoginServlet extends HttpServlet {
 			displayname = db.getDisplayName(email);
 			session.setAttribute("displayname", displayname);
 			
+			String current = String.valueOf(db.getCurrent(email));
+			session.setAttribute("current", current);
+			
 			ServletContext ContextA =session.getServletContext();
 			ContextA.setAttribute("session", session);
 		    

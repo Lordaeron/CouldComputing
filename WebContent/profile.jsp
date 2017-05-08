@@ -12,7 +12,8 @@
     <meta name="description" content="">
     <meta name="author" content="siliang liu">
 	<%HttpSession ses = request.getSession(true);
-	String name = ses.getAttribute("displayname").toString();%>
+	String name = ses.getAttribute("displayname").toString();
+	String current = ses.getAttribute("current").toString();%>
     <title>Profile</title>
 
     <!-- Bootstrap Core CSS -->
@@ -29,10 +30,14 @@
                 <a class="navbar-brand" href="#">CloudComputing</a>
             </div>
                 <ul class="nav navbar-nav navbar-right"> 
-                <li><a href="#"><span class="glyphicon glyphicon-user"></span><%= name%></a></li> 
+                <li><a href="#"><span class="glyphicon glyphicon-user"></span><%= name %></a></li> 
+                <li>
                 <form action="LogOff" method="POST">
-                <li><a href="login.jsp"><span class="glyphicon glyphicon-log-in"></span> Logoff</a></li> 
+                <a href="login.jsp"><span class="glyphicon glyphicon-log-in"></span> Logoff</a>
                 </form>
+                </li> 
+                <li><a href="#"><span class="glyphicon glyphicon-euro"></span><p><%=current %></p></a></li> 
+                
                 </ul> 
         </nav>
 
@@ -79,24 +84,24 @@
                                 <h4 class="title">Edit Profile</h4>
                             </div>
                             <div class="content">
-                                <form>
+                                <form action="Profile" method="POST" >
                                     <div class="row">
                                         <div class="col-md-5">
                                             <div class="form-group">
                                                 <label>City </label>
-                                                <input type="text" class="form-control" disabled placeholder="Sheffield" value="Sheffield">
+                                                <input type="text" name="city" class="form-control" disabled placeholder="Sheffield" value="">
                                             </div>
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Username</label>
-                                                <input type="text" class="form-control" placeholder="Username" value="bai li">
+                                                <input type="text" name="username" class="form-control" placeholder="Username" value="">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Email address</label>
-                                                <input type="email" class="form-control" placeholder="Email" value="bali@sheffield.ac.uk">
+                                                <input type="email" name="email" class="form-control" placeholder="Email" value="">
                                             </div>
                                         </div>
                                     </div>
@@ -105,13 +110,13 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>First Name</label>
-                                                <input type="text" class="form-control" placeholder="First Name" value="bai">
+                                                <input type="text" name="fristname" class="form-control" placeholder="First Name" value="">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Last Name</label>
-                                                <input type="text" class="form-control" placeholder="Last Name" value="li">
+                                                <input type="text" name="lastname" class="form-control" placeholder="Last Name" value="">
                                             </div>
                                         </div>
                                     </div>
@@ -120,13 +125,13 @@
                                         <div class="col-md-8">
                                             <div class="form-group">
                                                 <label>Address</label>
-                                                <input type="text" class="form-control" placeholder="Home Address" value="Dimaond, the university of sheffield">
+                                                <input type="text" name="address" class="form-control" placeholder="Home Address" value="">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Postal Code</label>
-                                                <input type="number" class="form-control" placeholder="ZIP Code">
+                                                <input type="number" name="postcode" class="form-control" placeholder="ZIP Code">
                                             </div>
                                         </div>
                                     </div>
@@ -134,8 +139,8 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>About Me</label>
-                                                <textarea rows="5" class="form-control" placeholder="Here can be your description" value="">a Chinese poet acclaimed from his own day to the present as a genius and a romantic figure who took traditional poetic forms to new heights. He and his friend Du Fu (712–770) were the two most prominent figures in the flourishing of Chinese poetry in the Tang dynasty, which is often called the "Golden Age of China". 
-                                                </textarea>
+                                                <input rows="5" name="aboutme" class="form-control" placeholder="Here can be your description" value=""> 
+                                                </input>
                                             </div>
                                         </div>
                                     </div>
@@ -159,10 +164,30 @@
     </div>
  
     <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+    <script
+  	src="https://code.jquery.com/jquery-2.2.4.js"
+  	integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
+  	crossorigin="anonymous"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
+
+     <script>
+      //  var money; 
+/*         var data = "current="+"Yshi29@sheffield"; 
+     	$(document).ready(function() {		
+    		$.ajax({
+            	type: "POST",
+            	url:  "/CloudComputing/DatabaseAPI",
+            	data: data,
+            	success: function (res) {
+                	money = res;
+                	console.log(money);
+            }})
+		});
+		$("#money").text(money); */
+
+     </script>
 </body>
 
 </html>

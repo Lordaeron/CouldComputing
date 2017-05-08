@@ -18,7 +18,17 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <%HttpSession ses = request.getSession(true);
 	String name = ses.getAttribute("displayname").toString();%>
+	<%@page import="appdatabase.*, java.util.*" %>
+	<%
+	readappdb rdb = new readappdb();
+	rdb.readapp();
+	ArrayList<appdb> apps = rdb.returnList(); 
+	%>
+	
+	
+	
 </head>
+
 
 <body>
 <form action = "TestSession", method = "POST">
@@ -71,6 +81,28 @@
          
             <div class="mainpanel col-md-9">
                 <div class="row">
+                <%
+                Iterator<appdb> i = apps.iterator();
+                while(i.hasNext()){
+                	appdb a = i.next();
+                	out.println("<div class='col-lg-3 col-md-6'>");
+                	out.println("<div class='panel panel-primary'>");
+                	out.println("<div class='panel-heading'>");
+                	out.println("<div class='row'>");
+                	out.println("<div class='col-xs-3'>");
+                	out.println("<img scr="+a.getUrl()+"/Test.png, alt=' icon ', height='50', width = '50'>");
+                	out.println("</div><div class='col-xs-9 text-right'>");
+                	out.println("<div>"+a.getName()+"</div>");
+                	out.println("</div></div></div>");
+                	out.println(" <a href="+a.getUrl()+">");
+                	out.println("<div class='panel-footer'>");
+                	out.println("<span class='pull-left'>View Details</span>");
+                	out.println("<span class='pull-right'><i class='fa fa-arrow-circle-right'></i></span>");
+                	out.println("<div class='clearfix'></div>");
+                	out.println("</div></a></div></div>");
+                }
+                
+                %>
                 <div class="col-lg-3 col-md-6">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
@@ -87,7 +119,7 @@
                         </div>
                         <a href="/Arkanoid">
                             <div class="panel-footer">
-                                <span class="pull-left">View Details<</span>
+                                <span class="pull-left">View Details</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                 <div class="clearfix"></div>
                             </div>

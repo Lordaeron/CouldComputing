@@ -28,7 +28,7 @@
           <a class="navbar-brand" href="#">CloudComputing</a>
        </div>
       <ul class="nav navbar-nav navbar-right"> 
-            <li><a href="login.html"><span class="glyphicon glyphicon-user"></span> Login</a></li> 
+            <li><a href="login.jsp"><span class="glyphicon glyphicon-user"></span> Login</a></li> 
       </ul> 
       </div>
      </nav>

@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class Profile
@@ -32,8 +33,21 @@ public class Profile extends HttpServlet {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		String errMsg = ""; //设置错误提示，后面补
     	RequestDispatcher rd;
+    	HttpSession ses = request.getSession(true);
+    	String email = ses.getAttribute("email").toString();
+    	String displayname = request.getParameter("username");
+    	String email1 = request.getParameter("email");
+    	//String password = request.getParameter("password");
+    	String first_name = request.getParameter("firstname");
+    	String last_name = request.getParameter("lastname");
+    	String address = request.getParameter("address");
+    	String postcode = request.getParameter("postcode");
+    	String about = request.getParameter("aboutme");
+    	ses.setAttribute("displayname", displayname);
+    	Database db = new Database();
+    	db.changeProfile(email1,email, displayname, first_name, last_name, address, postcode, about);
     	
-    	String displayname = request.getParameter("Username");
+    	
 	}
 
 	/**

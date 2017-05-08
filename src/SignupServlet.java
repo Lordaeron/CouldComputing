@@ -97,6 +97,10 @@ public class SignupServlet extends HttpServlet {
     		HttpSession session = request.getSession(true);
     		session.setAttribute("email", email);
     		session.setAttribute("displayname", displayname);
+    		Database db = new Database();
+    		String current = String.valueOf(db.getCurrent(email));
+			session.setAttribute("current", current);
+
     		System.out.println(session.getAttribute("email"));
     		System.out.println(session.getAttribute("displayname"));
     		Cookie cookiee = new Cookie("email",email);

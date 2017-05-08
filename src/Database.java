@@ -178,7 +178,7 @@ public String getDisplayName(String email){
 	return "fail";
 }
 
-public boolean changeProfile(String email, String displayname, String first_name, String last_name, String address, String postcode,
+public boolean changeProfile(String email1,String email, String displayname, String first_name, String last_name, String address, String postcode,
 		String about){
 	boolean flag = false;
 	try {
@@ -194,12 +194,16 @@ public boolean changeProfile(String email, String displayname, String first_name
 		Connection connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/cloudcomputing","root","Lordaeron");
 		System.out.println("success connect");
 		PreparedStatement pstmt;
-		String sql = "update users set firstname="+"'"+first_name+"',"+"last_name="+"'"+last_name+"',"+"displayname="+"'"+displayname+"'"+"where email="+"'"+email+"'";
+		String sql = "update users set  firstname="+"'"+first_name+"',"+"lastname="+"'"+last_name+"',"+"displayname="+"'"+displayname+"',"+"email = "+"'"+email1+"'"+"where email="+"'"+email+"'";
 		pstmt = (PreparedStatement)connect.prepareStatement(sql);
 		int rs = pstmt.executeUpdate();
-		String sql2 = "update user_profile set address="+"'"+address+"',"+"postcode="+"'"+postcode+"',"+"about="+"'"+about+"'"+"where email="+"'"+email+"'";
+		String sql2 = "update user_profile set address="+"'"+address+"',"+"postcode="+"'"+postcode+"',"+"about="+"'"+about+"',"+"email="+"'"+email1+"'"+"where email="+"'"+email+"'";
 		pstmt = (PreparedStatement)connect.prepareStatement(sql2);
 		int rs2 = pstmt.executeUpdate();
+		String sql3 = "update bank set email="+"'"+email1+"'"+"where email="+"'"+email+"'";
+		pstmt = (PreparedStatement)connect.prepareStatement(sql2);
+		int rs3 = pstmt.executeUpdate();
+		
 		connect.close();
 		return true;
 	} catch (SQLException e) {
@@ -315,5 +319,7 @@ public void uploadApp(String app_name,String owner_email, String url,String abou
 		e.printStackTrace();
 	}
 }
+
+
   
 }
