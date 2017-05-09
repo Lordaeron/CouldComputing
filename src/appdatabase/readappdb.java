@@ -15,7 +15,7 @@ public class readappdb {
 		}
 		
 		try {
-			Connection connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/cloudcomputing","root","Lordaeron");
+			Connection connect = DriverManager.getConnection("jdbc:mysql://localhost/CloudComputing","root","Lordaeron");
 			System.out.println("success connect");
 			PreparedStatement pstmt;
 			String sql = "select * from uploadedapps";

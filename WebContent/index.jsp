@@ -17,7 +17,8 @@
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <%HttpSession ses = request.getSession(true);
-	String name = ses.getAttribute("displayname").toString();%>
+	String name = ses.getAttribute("displayname").toString();
+    String current = ses.getAttribute("current").toString();%>
 	<%@page import="appdatabase.*, java.util.*" %>
 	<%
 	readappdb rdb = new readappdb();
@@ -31,7 +32,6 @@
 
 
 <body>
-<form action = "TestSession", method = "POST">
     <div class="container">
     <nav class="navbar navbar-inverse navbar-static-top">
       <div class="container-fluid">
@@ -40,9 +40,12 @@
         </div>
           <ul class="nav navbar-nav navbar-right"> 
             <li><a href="#"><span class="glyphicon glyphicon-user"></span><%= name%></a></li>
-            <form action="LogOff" method="POST">
-            <li><a href="login.jsp"><span class="glyphicon glyphicon-log-in"></span> Logoff</a></li>
-            </form>> 
+            <li>
+            <form  type ="hidden" action="LogOff" method="POST">
+            <a href="login.jsp"><span class="glyphicon glyphicon-log-in"></span> Logoff</a>
+            </form>
+            </li> 
+            <li><a href="#"><span class="glyphicon glyphicon-euro"></span><p><%=current %></p></a></li> 
           </ul> 
     </nav>
         <div class="raw">
@@ -94,8 +97,9 @@
                 	out.println("</div><div class='col-xs-9 text-right'>");
                 	out.println("<div>"+a.getName()+"</div>");
                 	out.println("</div></div></div>");
-                	out.println(" <a href="+a.getUrl()+">");
-                	out.println("<div class='panel-footer'>");
+			out.println(" <input id='curUrl' data-url='"+a.getUrl()+"'><a href="+a.getUrl()+">");
+                	//out.println(" <a href="+"#"+">");
+                	out.println("<div class='testpost' class='panel-footer'>");
                 	out.println("<span class='pull-left'>View Details</span>");
                 	out.println("<span class='pull-right'><i class='fa fa-arrow-circle-right'></i></span>");
                 	out.println("<div class='clearfix'></div>");
@@ -103,105 +107,44 @@
                 }
                 
                 %>
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    
-                                    <img scr="/Arkanoid/Test.png", alt=" icon ", height="50", width = "50">
-                                </div>
-                                <div class="col-xs-9 text-right">
-                             
-                                    <div>Arkanoid</div>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="/Arkanoid">
-                            <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-success">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <img scr="/Roulette/Test.png", alt=" icon ", height="50", width = "50">
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div>Roulette</div>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="/betgame">
-                            <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-info">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <img scr="/FlappyBird/Test.png", alt=" icon ", height="50", width = "50">
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div>Flappy Bird</div>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="/FlappyBird">
-                            <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-warning">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <img scr="/BlackJack/Test1.png", alt=" icon ", height="50", width = "50">
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div>Black Jack</div>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="/blackjack/blackjack.html">
-                            <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
-                    </div>
+
                 </div>
                 </div>
              </div>
+            </div>
+
+            <form id="postdata" action="moneybalance" method="POST">
+                  <input id="inputdata" type="hidden" name="url" value="yes">
+            </form>
+       
+
         </div>
-    </div>
- 
+   </div>
 
 
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+    
+    <script src="https://code.jquery.com/jquery-3.2.1.js"
+      integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+      crossorigin="anonymous" >  
+    </script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
-   </form>
+
+    <script>
+        $(document).ready(function(){
+        $(".testpost").click(function(){
+            $('input#curUrl').on('click',function(){
+           	 var curUrl = $(this).data('url');
+           	    
+            	$("#inputdata").val(curUrl);
+            	$("postdata").submit();
+            	alert("you will pay 10 pranuts")
+            });
+		});
+      });
+     
+    </script>
 </body>
 
 </html>

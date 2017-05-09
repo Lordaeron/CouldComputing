@@ -111,7 +111,7 @@ public class SignupServlet extends HttpServlet {
     		cookied.setPath("/");
     		response.addCookie(cookiee);
     		response.addCookie(cookied);
-    		rd = request.getRequestDispatcher("index.jsp");
+    		rd = request.getRequestDispatcher("main.jsp");
         	rd.forward(request, response);
     	}
     	else{

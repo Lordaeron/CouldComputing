@@ -88,14 +88,21 @@ public class Uploaderservlet extends HttpServlet {
 		Extractor ex = new Extractor();
 		String projectName[] = fileName.split("\\.");
 		String projectDir = "/Library/Tomcat/webapps";
-		ex.decompress(projectName[0],path, "/Library/Tomcat/webapps");
+		
+		ex.decompress(projectName[0],path, "/var/lib/tomcat8/webapps");
 		String path2 = projectDir + projectName[0];
-		String name3 = projectName[0];
+		String name3 = projectName[0]; //解压路径
+		
 		db.uploadApp(appName, email,"/"+projectName[0],about);
 		RequestDispatcher rd;
 		System.out.println(projectName[0]);
 		System.out.println(projectName[1]);
-		rd = request.getRequestDispatcher("/index.jsp");
+		
+		db.setCurrent(email, 10);
+		int current  = db.getCurrent(email);
+		session.setAttribute("current", String.valueOf(current));
+		
+		rd = request.getRequestDispatcher("/main.jsp");
 		rd.forward(request, response);
 		
 	}

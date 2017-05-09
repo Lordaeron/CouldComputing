@@ -15,7 +15,7 @@ public boolean checkPassword(String email,String password){
 	}
 	
 	try {
-		Connection connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/cloudcomputing","root","Lordaeron");
+		Connection connect = DriverManager.getConnection("jdbc:mysql://localhost/CloudComputing","root","Lordaeron");
 		System.out.println("success connect");
 		PreparedStatement pstmt;
 		String sql = "select * from users where email="+"'"+email+"'";
@@ -55,7 +55,7 @@ public boolean signup(String email,String password, String firstname, String las
 	}
 	
 	try {
-		Connection connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/cloudcomputing","root","Lordaeron");
+		Connection connect = DriverManager.getConnection("jdbc:mysql://localhost/CloudComputing","root","Lordaeron");
 		System.out.println("success connect");
 		Statement stmt = connect.createStatement();
 		String sql = "insert into users "
@@ -92,7 +92,7 @@ public String getFirstName(String email){
 	}
 	
 	try {
-		Connection connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/cloudcomputing","root","Lordaeron");
+		Connection connect = DriverManager.getConnection("jdbc:mysql://localhost/CloudComputing","root","Lordaeron");
 		System.out.println("success connect");
 		PreparedStatement pstmt;
 		String sql = "select * from users where email="+"'"+email+"'";
@@ -125,7 +125,7 @@ public String getLastName(String email){
 	}
 	
 	try {
-		Connection connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/cloudcomputing","root","Lordaeron");
+		Connection connect = DriverManager.getConnection("jdbc:mysql://localhost/CloudComputing","root","Lordaeron");
 		System.out.println("success connect");
 		PreparedStatement pstmt;
 		String sql = "select * from users where email="+"'"+email+"'";
@@ -158,7 +158,7 @@ public String getDisplayName(String email){
 	}
 	
 	try {
-		Connection connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/cloudcomputing","root","Lordaeron");
+		Connection connect = DriverManager.getConnection("jdbc:mysql://localhost/CloudComputing","root","Lordaeron");
 		System.out.println("success connect");
 		PreparedStatement pstmt;
 		String sql = "select * from users where email="+"'"+email+"'";
@@ -191,7 +191,7 @@ public boolean changeProfile(String email1,String email, String displayname, Str
 	}
 	
 	try {
-		Connection connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/cloudcomputing","root","Lordaeron");
+		Connection connect = DriverManager.getConnection("jdbc:mysql://localhost/CloudComputing","root","Lordaeron");
 		System.out.println("success connect");
 		PreparedStatement pstmt;
 		String sql = "update users set  firstname="+"'"+first_name+"',"+"lastname="+"'"+last_name+"',"+"displayname="+"'"+displayname+"',"+"email = "+"'"+email1+"'"+"where email="+"'"+email+"'";
@@ -227,7 +227,7 @@ public int getCurrent(String email){
 	}
 	
 	try {
-		Connection connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/cloudcomputing","root","Lordaeron");
+		Connection connect = DriverManager.getConnection("jdbc:mysql://localhost/CloudComputing","root","Lordaeron");
 		System.out.println("success connect");
 		PreparedStatement pstmt;
 		String sql = "select * from bank where email="+"'"+email+"'";
@@ -261,7 +261,7 @@ public boolean setCurrent(String email,int change){
 	}
 	
 	try {
-		Connection connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/cloudcomputing","root","Lordaeron");
+		Connection connect = DriverManager.getConnection("jdbc:mysql://localhost/CloudComputing","root","Lordaeron");
 		System.out.println("success connect");
 		PreparedStatement pstmt;
 		String sql = "select * from bank where email="+"'"+email+"'";
@@ -303,7 +303,7 @@ public void uploadApp(String app_name,String owner_email, String url,String abou
 	}
 	
 	try {
-		Connection connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/cloudcomputing","root","Lordaeron");
+		Connection connect = DriverManager.getConnection("jdbc:mysql://localhost/CloudComputing","root","Lordaeron");
 		System.out.println("success connect");
 		Statement stmt = connect.createStatement();
 		String sql = "insert into uploadedapps "

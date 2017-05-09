@@ -32,7 +32,7 @@
                 <ul class="nav navbar-nav navbar-right"> 
                 <li><a href="#"><span class="glyphicon glyphicon-user"></span><%= name %></a></li> 
                 <li>
-                <form action="LogOff" method="POST">
+                <form type ="hidden" action="LogOff" method="POST">
                 <a href="login.jsp"><span class="glyphicon glyphicon-log-in"></span> Logoff</a>
                 </form>
                 </li> 
